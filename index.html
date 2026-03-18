@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spiti Valley Expedition — Mar 20–26, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05080f;
+    --bg2: #090d17;
+    --panel: #0d1220;
+    --panel2: #111827;
+    --border: #1e2d4a;
+    --star: #c8d9ff;
+    --cream: #e8e0cc;
+    --gold: #c9a84c;
+    --gold2: #f0d080;
+    --blue: #4a8fcb;
+    --blue2: #6db3f2;
+    --purple: #7c5cbf;
+    --mint: #4ecfa8;
+    --warn: #e07b3a;
+    --red: #e05050;
+    --muted: #5a6a82;
+    --dim: #3a4a60;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    font-size: 15px;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(200,217,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(200,217,255,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 20%, rgba(200,217,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 55%, rgba(200,217,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 10%, rgba(200,217,255,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 85% 30%, rgba(200,217,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 70%, rgba(200,217,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 80%, rgba(200,217,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 65%, rgba(200,217,255,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 85%, rgba(200,217,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 45%, rgba(200,217,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 50%, rgba(200,217,255,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 95% 50%, rgba(200,217,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 40% 90%, rgba(200,217,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 88%, rgba(200,217,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 5%, rgba(200,217,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 75%, rgba(200,217,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 50% 5%, rgba(200,217,255,0.6) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 30% at 20% 15%, rgba(74,143,203,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 80% 60%, rgba(124,92,191,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 25% at 50% 90%, rgba(201,168,76,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 64px 0 44px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    background: rgba(201,168,76,0.05);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    color: var(--star);
+    line-height: 1.1;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold2); }
+  .hero-sub {
+    margin-top: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-val { font-family: 'DM Mono', monospace; font-size: 22px; color: var(--gold2); font-weight: 500; }
+  .hero-stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+
+  /* NOTICES */
+  .notice {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+  .notice strong { color: var(--gold2); }
+  .notice-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 7px;
+  }
+  .warn-box { background: rgba(224,123,58,0.06); border: 1px solid rgba(224,123,58,0.25); border-left: 3px solid var(--warn); margin-bottom: 16px; }
+  .warn-box .notice-title { color: var(--warn); }
+  .warn-box strong { color: #f09060; }
+  .info-box { background: rgba(74,143,203,0.06); border: 1px solid rgba(74,143,203,0.2); border-left: 3px solid var(--blue); margin-bottom: 40px; }
+  .info-box .notice-title { color: var(--blue2); }
+  .info-box strong { color: var(--blue2); }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* MILESTONES */
+  .milestones {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 48px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .milestones::before { content: ''; position: absolute; top: 14px; left: 0; right: 0; height: 1px; background: var(--border); }
+  .milestone { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 100px; position: relative; cursor: pointer; }
+  .milestone-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--blue); background: var(--bg); position: relative; z-index: 1; flex-shrink: 0; transition: background 0.2s, box-shadow 0.2s; }
+  .milestone.active .milestone-dot { background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+  .milestone-date { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); text-align: center; }
+  .milestone-place { font-size: 11px; color: var(--cream); text-align: center; font-weight: 500; }
+  .milestone.active .milestone-place { color: var(--gold2); }
+
+  /* TAB BAR */
+  .tab-bar-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5,8,15,0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    margin: 0 -24px 32px;
+    padding: 0 24px;
+  }
+  .tab-bar { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 11px 16px 9px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.18s;
+    gap: 2px;
+  }
+  .tab-btn:hover { background: rgba(255,255,255,0.03); }
+  .tab-btn.active { border-bottom-color: var(--gold); background: rgba(201,168,76,0.05); }
+  .tab-btn-day { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+  .tab-btn.active .tab-btn-day { color: var(--gold); }
+  .tab-btn-dest { font-family: 'Playfair Display', serif; font-size: 13px; color: var(--star); white-space: nowrap; }
+  .tab-btn.active .tab-btn-dest { color: var(--gold2); }
+  .tab-btn-moon { font-size: 14px; line-height: 1; }
+  .tab-sky-dot { width: 5px; height: 5px; border-radius: 50%; margin: 2px auto 0; }
+
+  /* DAY PANELS */
+  .day-panel { display: none; }
+  .day-panel.active { display: block; animation: fadeUp 0.22s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* DAY HEADER CARD */
+  .day-header-card {
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 8px 8px 0 0;
+    padding: 20px 24px 18px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+  }
+  .day-big-num { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 700; color: var(--dim); line-height: 1; }
+  .day-header-title h2 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--star); margin-bottom: 8px; }
+  .day-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 2px; }
+  .tag-route { background: rgba(74,143,203,0.12); color: var(--blue2); border: 1px solid rgba(74,143,203,0.2); }
+  .tag-hotel { background: rgba(78,207,168,0.08); color: var(--mint); border: 1px solid rgba(78,207,168,0.15); }
+  .tag-km { background: rgba(201,168,76,0.08); color: var(--gold); border: 1px solid rgba(201,168,76,0.15); }
+  .moon-badge { text-align: center; min-width: 76px; }
+  .moon-icon { font-size: 30px; line-height: 1; margin-bottom: 4px; }
+  .moon-pct { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); }
+  .moon-name { font-size: 10px; color: var(--muted); }
+
+  /* DAY BODY */
+  .day-body {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 8px;
+  }
+  .day-col-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* TIMELINE */
+  .timeline-item { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+  .timeline-time { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); white-space: nowrap; padding-top: 2px; min-width: 50px; }
+  .timeline-text { font-size: 13px; color: #8090a8; line-height: 1.55; }
+  .timeline-text strong { color: var(--cream); }
+
+  /* TODO */
+  .todo-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .todo-item { font-size: 13px; color: #8090a8; padding: 7px 10px; background: rgba(255,255,255,0.02); border-radius: 3px; border-left: 2px solid var(--border); line-height: 1.55; }
+  .todo-item strong { color: var(--cream); }
+
+  /* MILKY WAY BLOCK */
+  .mw-block { background: rgba(10,15,35,0.6); border: 1px solid rgba(74,143,203,0.15); border-radius: 6px; padding: 14px 16px; }
+  .mw-status { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .mw-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .mw-dot.excellent { background: #4ecfa8; box-shadow: 0 0 6px #4ecfa8; }
+  .mw-dot.good      { background: #4a8fcb; box-shadow: 0 0 6px #4a8fcb; }
+  .mw-dot.fair      { background: #c9a84c; box-shadow: 0 0 6px #c9a84c; }
+  .mw-dot.limited   { background: #e07b3a; box-shadow: 0 0 6px #e07b3a; }
+  .mw-status-text { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; }
+  .mw-status-text.excellent { color: #4ecfa8; }
+  .mw-status-text.good { color: var(--blue2); }
+  .mw-status-text.fair { color: var(--gold); }
+  .mw-status-text.limited { color: var(--warn); }
+  .mw-info { font-size: 12.5px; color: #7a8fa8; line-height: 1.6; }
+  .mw-info strong { color: var(--cream); }
+  .mw-info .correction { color: #e07b3a; font-size: 11.5px; }
+  .mw-window { display: flex; align-items: center; margin-top: 7px; background: rgba(74,143,203,0.06); border-radius: 3px; padding: 6px 10px; }
+  .mw-window-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .mw-window-time { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--blue2); font-weight: 500; margin-left: auto; }
+  .mw-window.alert { background: rgba(224,123,58,0.08); }
+  .mw-window.alert .mw-window-time { color: var(--warn); }
+
+  /* NAV */
+  .day-nav { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .day-nav-btn { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--muted); background: none; border: 1px solid var(--border); padding: 6px 14px; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
+  .day-nav-btn:hover { border-color: var(--blue); color: var(--blue2); background: rgba(74,143,203,0.06); }
+  .day-nav-btn:disabled { opacity: 0.2; cursor: default; pointer-events: none; }
+
+  /* GUIDE GRIDS */
+  .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 48px; }
+  @media (max-width: 700px) { .guide-grid { grid-template-columns: 1fr; } }
+  .guide-card { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 20px 22px; }
+  .guide-card-title { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--star); margin-bottom: 12px; display: flex; align-items: center; gap: 9px; }
+  .guide-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .guide-card li { font-size: 13px; color: #a0b0c8; padding-left: 16px; position: relative; line-height: 1.55; }
+  .guide-card li::before { content: '→'; position: absolute; left: 0; color: var(--blue); font-family: 'DM Mono', monospace; font-size: 10px; top: 3px; }
+  .guide-card li strong { color: var(--cream); }
+
+  /* SPOT GUIDE */
+  .spot-guide { background: linear-gradient(135deg, rgba(124,92,191,0.08), rgba(74,143,203,0.06)); border: 1px solid rgba(124,92,191,0.2); border-radius: 8px; padding: 26px; margin-bottom: 40px; }
+  .spot-guide h3 { font-family: 'Playfair Display', serif; font-size: 19px; color: var(--star); margin-bottom: 18px; }
+  .spot-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+  .spot-step { background: rgba(0,0,0,0.2); border-radius: 5px; padding: 13px 15px; }
+  .spot-step-num { font-family: 'DM Mono', monospace; font-size: 9.5px; color: var(--purple); letter-spacing: 0.15em; margin-bottom: 6px; }
+  .spot-step p { font-size: 12.5px; color: #8090a8; line-height: 1.55; }
+  .spot-step p strong { color: var(--cream); }
+
+  /* SUMMARY TABLE */
+  .settings-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; font-size: 13px; }
+  .settings-table th { background: rgba(74,143,203,0.1); border: 1px solid var(--border); padding: 9px 12px; text-align: left; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.15em; color: var(--blue2); font-weight: 400; }
+  .settings-table td { border: 1px solid var(--border); padding: 9px 12px; color: #a0b0c8; vertical-align: top; }
+  .settings-table tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+  .settings-table td strong { color: var(--cream); }
+  .verified-badge { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.12em; color: var(--mint); background: rgba(78,207,168,0.08); border: 1px solid rgba(78,207,168,0.2); padding: 1px 5px; border-radius: 2px; vertical-align: middle; margin-left: 4px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 850px) { .day-body { grid-template-columns: 1fr; } .day-header-card { grid-template-columns: 48px 1fr auto; } .day-big-num { font-size: 36px; } }
+  @media (max-width: 600px) { .hero-stats { gap: 20px; } .tab-btn { padding: 9px 11px 7px; } .tab-btn-dest { font-size: 11px; } .settings-table { font-size: 11px; } .settings-table th, .settings-table td { padding: 7px 8px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Astrophotography Expedition</div>
+    <h1>Spiti Valley<br><em>Under Dark Skies</em></h1>
+    <div class="hero-sub">MARCH 20 – 26, 2026 &nbsp;·&nbsp; SHIMLA → KINNAUR → SPITI</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-val">7</div><div class="hero-stat-label">Days</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">~920</div><div class="hero-stat-label">Total km</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">3820+</div><div class="hero-stat-label">Peak alt. m</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">Bortle 1</div><div class="hero-stat-label">Sky darkness</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">New Moon</div><div class="hero-stat-label">Mar 19</div></div>
+    </div>
+  </div>
+
+  <!-- NOTICES -->
+  <div class="notice">
+    <div class="notice-title">🌙 Moon Context — Verified for Lahaul & Spiti, Mar 20–26, 2026</div>
+    <strong>New Moon: March 19, 2026 at 6:53 AM IST</strong> (Spiti local time, per timeanddate.com). The trip begins just one day after new moon — near-perfect dark skies. First Quarter falls on <strong>March 26 at 12:47 AM IST</strong>, so the moon stays a thin crescent for the first 6 days. All moonset times below are verified from timeanddate.com for Lahaul & Spiti district specifically.
+  </div>
+  <div class="notice warn-box">
+    <div class="notice-title">⚠️ Correction — Galactic Core vs. Milky Way Band</div>
+    The original itinerary says "Milky Way from 9:30 PM onwards" — <strong>partially correct</strong>: the faint galactic band is visible overhead all night. But the <strong>galactic core</strong> (bright colourful bulge — what everyone wants to photograph) rises only around <strong>3:00–4:30 AM IST</strong> as a pre-dawn object in late March. Set your alarm. The core is an evening object from May–June onward.
+  </div>
+  <div class="notice info-box">
+    <div class="notice-title">✓ Data Source</div>
+    All moonset times are sourced directly from <strong>timeanddate.com for Lahaul & Spiti, Himachal Pradesh</strong> (lat ~32.5°N, lon ~77.6°E). Illumination percentages are from the same source, measured at lunar noon each day. These supersede the approximate generic times used in the previous version.
+  </div>
+
+  <!-- ROUTE MILESTONES -->
+  <div class="section-label">Route Overview</div>
+  <div class="milestones">
+    <div class="milestone active" onclick="switchTab(0)"><div class="milestone-dot"></div><div class="milestone-date">Mar 20</div><div class="milestone-place">Shimla<br>→ Sangla</div></div>
+    <div class="milestone" onclick="switchTab(1)"><div class="milestone-dot"></div><div class="milestone-date">Mar 21</div><div class="milestone-place">Chitkul<br>→ Kalpa</div></div>
+    <div class="milestone" onclick="switchTab(2)"><div class="milestone-dot"></div><div class="milestone-date">Mar 22</div><div class="milestone-place">Kalpa →<br>Dhankar</div></div>
+    <div class="milestone" onclick="switchTab(3)"><div class="milestone-dot"></div><div class="milestone-date">Mar 23</div><div class="milestone-place">Dhankar<br>→ Mudh</div></div>
+    <div class="milestone" onclick="switchTab(4)"><div class="milestone-dot"></div><div class="milestone-date">Mar 24</div><div class="milestone-place">Mudh<br>Local</div></div>
+    <div class="milestone" onclick="switchTab(5)"><div class="milestone-dot"></div><div class="milestone-date">Mar 25</div><div class="milestone-place">Mudh →<br>Rampur</div></div>
+    <div class="milestone" onclick="switchTab(6)"><div class="milestone-dot"></div><div class="milestone-date">Mar 26</div><div class="milestone-place">Rampur<br>→ Shimla</div></div>
+  </div>
+
+  <!-- SECTION LABEL + TAB BAR -->
+  <div class="section-label">Day-by-Day Itinerary</div>
+  <div class="tab-bar-wrap">
+    <div class="tab-bar" id="tabBar">
+      <button class="tab-btn active" onclick="switchTab(0)">
+        <span class="tab-btn-day">Day 1</span><span class="tab-btn-dest">Mar 20 · Sangla</span>
+        <span class="tab-btn-moon">🌒</span>
+        <div class="tab-sky-dot" style="background:#4ecfa8;box-shadow:0 0 4px #4ecfa8;"></div>
+      </button>
+      <button class="tab-btn" onclick="switchTab(1)">
+        <span class="tab-btn-day">Day 2</span><span class="tab-btn-dest">Mar 21 · Kalpa</span>
+        <span class="tab-btn-moon">🌒</span>
+        <div class="tab-sky-dot" style="background:#4ecfa8;box-shadow:0 0 4px #4ecfa8;"></div>
+      </button>
+      <button class="tab-btn" onclick="switchTab(2)">
+        <span class="tab-btn-day">Day 3</span><span class="tab-btn-dest">Mar 22 · Dhankar</span>
+        <span class="tab-btn-moon">🌒</span>
+        <div class="tab-sky-dot" style="background:#4a8fcb;box-shadow:0 0 4px #4a8fcb;"></div>
+      </button>
+      <button class="tab-btn" onclick="switchTab(3)">
+        <span class="tab-btn-day">Day 4</span><span class="tab-btn-dest">Mar 23 · Mudh</span>
+        <span class="tab-btn-moon">🌒</span>
+        <div class="tab-sky-dot" style="background:#4a8fcb;box-shadow:0 0 4px #4a8fcb;"></div>
+      </button>
+      <button class="tab-btn" onclick="switchTab(4)">
+        <span class="tab-btn-day">Day 5</span><span class="tab-btn-dest">Mar 24 · Mudh</span>
+        <span class="tab-btn-moon">🌓</span>
+        <div class="tab-sky-dot" style="background:#c9a84c;box-shadow:0 0 4px #c9a84c;"></div>
+      </button>
+      <button class="tab-btn" onclick="switchTab(5)">
+        <span class="tab-btn-day">Day 6</span><span class="tab-btn-dest">Mar 25 · Rampur</span>
+        <span class="tab-btn-moon">🌓</span>
+        <div class="tab-sky-dot" style="background:#c9a84c;box-shadow:0 0 4px #c9a84c;"></div>
+      </button>
+      <button class="tab-btn" onclick="switchTab(6)">
+        <span class="tab-btn-day">Day 7</span><span class="tab-btn-dest">Mar 26 · Shimla</span>
+        <span class="tab-btn-moon">🌓</span>
+        <div class="tab-sky-dot" style="background:#e07b3a;box-shadow:0 0 4px #e07b3a;"></div>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 1 ═══ -->
+  <div class="day-panel active" id="panel-0">
+    <div class="day-nav"><button class="day-nav-btn" disabled>← Prev</button><button class="day-nav-btn" onclick="switchTab(1)">Next Day →</button></div>
+    <div class="day-header-card">
+      <div class="day-big-num">01</div>
+      <div class="day-header-title">
+        <h2>Shimla → Narkanda → Rampur → Sangla</h2>
+        <div class="day-meta"><span class="tag tag-route">Mar 20, Thu</span><span class="tag tag-km">235 km · 8–9 hrs</span><span class="tag tag-hotel">Hotel Prakash, Sangla</span></div>
+      </div>
+      <div class="moon-badge"><div class="moon-icon">🌒</div><div class="moon-pct">2.2%</div><div class="moon-name">Waxing Crescent</div></div>
+    </div>
+    <div class="day-body">
+      <div>
+        <div class="day-col-title">Route & Timeline</div>
+        <div class="timeline-item"><div class="timeline-time">07:00</div><div class="timeline-text">Depart Shimla. Fill fuel and stock snacks — limited options ahead.</div></div>
+        <div class="timeline-item"><div class="timeline-time">08:30</div><div class="timeline-text"><strong>Narkanda</strong> (~2700m) — Apple orchard zone. Chai stop, sunrise views. 30 min.</div></div>
+        <div class="timeline-item"><div class="timeline-time">11:00</div><div class="timeline-text"><strong>Rampur</strong> — Last ATM before Spiti. Withdraw cash. Sutlej River walk. 45 min.</div></div>
+        <div class="timeline-item"><div class="timeline-time">13:30</div><div class="timeline-text">Enter <strong>Kinnaur district</strong>. Road narrows along cliff faces — drive carefully.</div></div>
+        <div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-text"><strong>Arrive Sangla</strong>. Check-in Hotel Prakash. Stunning green pine-clad river gorge.</div></div>
+      </div>
+      <div>
+        <div class="day-col-title">Things to Do</div>
+        <ul class="todo-list">
+          <li class="todo-item"><strong>Narkanda:</strong> Apple orchards, Hatu Peak viewpoint (+20km), Hatu Temple</li>
+          <li class="todo-item"><strong>Rampur:</strong> Padampur Palace exterior, Kinnauri market — Kinnauri shawls</li>
+          <li class="todo-item"><strong>Sangla Valley:</strong> Kamru Fort and Kamru Nag Temple (20 min walk), sweeping Baspa River views</li>
+          <li class="todo-item">Evening: Walk the river bank — valley walls are dramatic at golden hour</li>
+        </ul>
+      </div>
+      <div>
+        <div class="day-col-title">Night Sky — Milky Way</div>
+        <div class="mw-block">
+          <div class="mw-status"><div class="mw-dot excellent"></div><div class="mw-status-text excellent">EXCELLENT — BEST NIGHT</div></div>
+          <div class="mw-info">
+            Moon only <strong>2.2%</strong> illuminated (1 day past new moon). Sets at <strong>8:04 PM IST</strong>. After astronomical twilight (~8:15 PM), the sky is essentially completely dark for the entire night.
+            <br><br>
+            <span class="correction">⚠️ Band visible ~9:30 PM overhead. Galactic core rises ~3:30–4:00 AM from SE — set your alarm for pre-dawn core shots. Sangla is valley-bound; shoot from open fields facing south.</span>
+          </div>
+          <div class="mw-window"><div class="mw-window-label">Moonset</div><div class="mw-window-time">8:04 PM IST ✓</div></div>
+          <div class="mw-window"><div class="mw-window-label">Dark window</div><div class="mw-window-time">8:15 PM → dawn</div></div>
+          <div class="mw-window"><div class="mw-window-label">Core rises</div><div class="mw-window-time">~3:30–4:00 AM</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 2 ═══ -->
+  <div class="day-panel" id="panel-1">
+    <div class="day-nav"><button class="day-nav-btn" onclick="switchTab(0)">← Prev Day</button><button class="day-nav-btn" onclick="switchTab(2)">Next Day →</button></div>
+    <div class="day-header-card">
+      <div class="day-big-num">02</div>
+      <div class="day-header-title">
+        <h2>Sangla → Chitkul → Kalpa</h2>
+        <div class="day-meta"><span class="tag tag-route">Mar 21, Fri</span><span class="tag tag-km">90 km · 4–5 hrs</span><span class="tag tag-hotel">Hotel Alpine Nest, Kalpa</span></div>
+      </div>
+      <div class="moon-badge"><div class="moon-icon">🌒</div><div class="moon-pct">7.1%</div><div class="moon-name">Waxing Crescent</div></div>
+    </div>
+    <div class="day-body">
+      <div>
+        <div class="day-col-title">Route & Timeline</div>
+        <div class="timeline-item"><div class="timeline-time">08:30</div><div class="timeline-text">Depart Sangla. Road continues up the Baspa valley.</div></div>
+        <div class="timeline-item"><div class="timeline-time">09:30</div><div class="timeline-text"><strong>Chitkul</strong> (~3450m) — Last Indian village before Tibet. 2–3 hrs here. Wooden temple, prayer flags, Baspa River.</div></div>
+        <div class="timeline-item"><div class="timeline-time">12:30</div><div class="timeline-text">Return down Baspa valley to junction, then north toward Recong Peo.</div></div>
+        <div class="timeline-item"><div class="timeline-time">14:30</div><div class="timeline-text"><strong>Recong Peo</strong> — District HQ. Inner Line Permits if needed. Last good connectivity.</div></div>
+        <div class="timeline-item"><div class="timeline-time">15:30</div><div class="timeline-text"><strong>Arrive Kalpa</strong> (~2960m). Face-on views of <strong>Kinner Kailash ridge</strong> (6050m). Watch alpenglow at sunset.</div></div>
+      </div>
+      <div>
+        <div class="day-col-title">Things to Do</div>
+        <ul class="todo-list">
+          <li class="todo-item"><strong>Chitkul:</strong> Mathi temple, riverside meadow, Indo-Tibetan wooden architecture. Border pillar viewpoint (30-min walk)</li>
+          <li class="todo-item"><strong>Baspa suspension bridges:</strong> Dramatic wide-angle photography opportunities</li>
+          <li class="todo-item"><strong>Kalpa:</strong> Suicide Point — unobstructed Kinner Kailash panorama. Roghi village apple orchards (20 min below Kalpa)</li>
+          <li class="todo-item">Evening: 200m walk from Alpine Nest to open terrace — premier Milky Way viewpoint with Kinner Kailash silhouette</li>
+        </ul>
+      </div>
+      <div>
+        <div class="day-col-title">Night Sky — Milky Way</div>
+        <div class="mw-block">
+          <div class="mw-status"><div class="mw-dot excellent"></div><div class="mw-status-text excellent">EXCELLENT CONDITIONS</div></div>
+          <div class="mw-info">
+            Moon <strong>7.1%</strong> illuminated. Sets at <strong>9:14 PM IST</strong> — about an hour later than last night, but still very early. Almost entirely dark night. <strong>Kinner Kailash as foreground</strong> is a world-class composition.
+            <br><br>
+            The original itinerary said "~9:45 PM" — actual verified time is <strong>9:14 PM</strong>, 30 min earlier.
+            <br><br>
+            <span class="correction">⚠️ Core rises ~3:15 AM. Two sessions: band/arch 9:30 PM–1 AM, reset for core 3–5 AM.</span>
+          </div>
+          <div class="mw-window"><div class="mw-window-label">Moonset</div><div class="mw-window-time">9:14 PM IST ✓</div></div>
+          <div class="mw-window"><div class="mw-window-label">Dark window</div><div class="mw-window-time">9:15 PM → dawn</div></div>
+          <div class="mw-window"><div class="mw-window-label">Core rises</div><div class="mw-window-time">~3:15 AM IST</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 3 ═══ -->
+  <div class="day-panel" id="panel-2">
+    <div class="day-nav"><button class="day-nav-btn" onclick="switchTab(1)">← Prev Day</button><button class="day-nav-btn" onclick="switchTab(3)">Next Day →</button></div>
+    <div class="day-header-card">
+      <div class="day-big-num">03</div>
+      <div class="day-header-title">
+        <h2>Kalpa → Nako → Tabo → Dhankar</h2>
+        <div class="day-meta"><span class="tag tag-route">Mar 22, Sat</span><span class="tag tag-km">170 km · 7–8 hrs</span><span class="tag tag-hotel">Hotel Dhankar Heights</span></div>
+      </div>
+      <div class="moon-badge"><div class="moon-icon">🌒</div><div class="moon-pct">14.6%</div><div class="moon-name">Waxing Crescent</div></div>
+    </div>
+    <div class="day-body">
+      <div>
+        <div class="day-col-title">Route & Timeline</div>
+        <div class="timeline-item"><div class="timeline-time">07:00</div><div class="timeline-text">Depart Kalpa. Longest driving day of the trip.</div></div>
+        <div class="timeline-item"><div class="timeline-time">09:30</div><div class="timeline-text"><strong>Nako Lake</strong> (~3660m) — Sacred glacial lake. 30-min kora walk. Nako monastery overlooks it. Altitude effects may begin here.</div></div>
+        <div class="timeline-item"><div class="timeline-time">11:30</div><div class="timeline-text">Cross into <strong>Spiti Valley</strong>. Landscape becomes dramatically barren — ochre cliffs, turquoise river.</div></div>
+        <div class="timeline-item"><div class="timeline-time">13:00</div><div class="timeline-text"><strong>Tabo</strong> (~3050m) — Lunch. Spiti River bank. Tabo Monastery (1000+ yrs, UNESCO tentative). 30 min.</div></div>
+        <div class="timeline-item"><div class="timeline-time">15:00</div><div class="timeline-text"><strong>Arrive Dhankar</strong> (~3890m). Fortress monastery perched 300m above the Pin-Spiti confluence.</div></div>
+      </div>
+      <div>
+        <div class="day-col-title">Things to Do</div>
+        <ul class="todo-list">
+          <li class="todo-item"><strong>Nako:</strong> Sacred lake kora walk, monastery murals, fossil hunting in roadcuts</li>
+          <li class="todo-item"><strong>Tabo Monastery:</strong> "Ajanta of the Himalayas" — 10th-century murals. No photography inside. Cave complex behind the main temple is unmissable</li>
+          <li class="todo-item"><strong>Dhankar Fort:</strong> One of Earth's most dramatically sited buildings — 300m above two converging rivers</li>
+          <li class="todo-item">Evening: 15-min trek to <strong>Dhankar Lake</strong> — the prime star photography spot on this route</li>
+        </ul>
+      </div>
+      <div>
+        <div class="day-col-title">Night Sky — Milky Way</div>
+        <div class="mw-block">
+          <div class="mw-status"><div class="mw-dot good"></div><div class="mw-status-text good">GREAT CONDITIONS</div></div>
+          <div class="mw-info">
+            Moon <strong>14.6%</strong> illuminated. Sets at <strong>10:26 PM IST</strong> — the original itinerary said "~10:00–10:15 PM," the actual time is 16 minutes later. Still excellent.
+            <br><br>
+            Trek to Dhankar Lake before dark, set up, wait for moonset. Lake may reflect stars if not frozen. Dhankar Fort silhouette is an iconic foreground.
+            <br><br>
+            <span class="correction">⚠️ The itinerary says "Great for Milky Way after 10 PM" — accurate for the band. Core rises ~3:00 AM. Both sessions worthwhile.</span>
+          </div>
+          <div class="mw-window"><div class="mw-window-label">Moonset</div><div class="mw-window-time">10:26 PM IST ✓</div></div>
+          <div class="mw-window"><div class="mw-window-label">Dark window</div><div class="mw-window-time">10:30 PM → dawn</div></div>
+          <div class="mw-window"><div class="mw-window-label">Core rises</div><div class="mw-window-time">~3:00 AM IST</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 4 ═══ -->
+  <div class="day-panel" id="panel-3">
+    <div class="day-nav"><button class="day-nav-btn" onclick="switchTab(2)">← Prev Day</button><button class="day-nav-btn" onclick="switchTab(4)">Next Day →</button></div>
+    <div class="day-header-card">
+      <div class="day-big-num">04</div>
+      <div class="day-header-title">
+        <h2>Dhankar → Pin Valley → Mudh</h2>
+        <div class="day-meta"><span class="tag tag-route">Mar 23, Sun</span><span class="tag tag-km">65 km · 3–4 hrs (rough road)</span><span class="tag tag-hotel">Tara House Homestay, Mudh</span></div>
+      </div>
+      <div class="moon-badge"><div class="moon-icon">🌒</div><div class="moon-pct">24.1%</div><div class="moon-name">Waxing Crescent</div></div>
+    </div>
+    <div class="day-body">
+      <div>
+        <div class="day-col-title">Route & Timeline</div>
+        <div class="timeline-item"><div class="timeline-time">08:00</div><div class="timeline-text">Depart Dhankar. Kaza road to Pin Valley junction at Attargo.</div></div>
+        <div class="timeline-item"><div class="timeline-time">08:45</div><div class="timeline-text">Turn into <strong>Pin Valley</strong>. Road becomes rough dirt track. 4×4 required. Multiple Pin River pullouts.</div></div>
+        <div class="timeline-item"><div class="timeline-time">10:00</div><div class="timeline-text"><strong>Gulling</strong> — Optional stop. Snow leopard territory. Ask locals about recent sightings.</div></div>
+        <div class="timeline-item"><div class="timeline-time">11:30</div><div class="timeline-text"><strong>Arrive Mudh</strong> (~3820m) — End of the road. Check-in Tara House. One of India's most remote driveable villages. Acclimatise carefully.</div></div>
+        <div class="timeline-item"><div class="timeline-time">14:00</div><div class="timeline-text">Afternoon hike or rest. Scout open fields behind homestay for tonight's shoot.</div></div>
+      </div>
+      <div>
+        <div class="day-col-title">Things to Do</div>
+        <ul class="todo-list">
+          <li class="todo-item"><strong>Pin River pullouts:</strong> Turquoise river against beige cliffs — multiple compositions. Morning light is best</li>
+          <li class="todo-item"><strong>Snow Leopard tracking:</strong> March is prime season. Hike with binoculars, ask your host about sightings</li>
+          <li class="todo-item"><strong>Mudh village walk:</strong> Flat-roofed Spitian homes, yaks, horses. Visit the local women's cooperative</li>
+          <li class="todo-item"><strong>Valley hike:</strong> Walk 2–3km beyond Mudh — absolute silence, 360° mountain panorama</li>
+        </ul>
+      </div>
+      <div>
+        <div class="day-col-title">Night Sky — Milky Way</div>
+        <div class="mw-block">
+          <div class="mw-status"><div class="mw-dot good"></div><div class="mw-status-text good">VERY GOOD CONDITIONS</div></div>
+          <div class="mw-info">
+            Moon <strong>24.1%</strong> illuminated. Sets at <strong>11:38 PM IST</strong> — the original itinerary said "10:30–11:00 PM," actual time is <strong>38 minutes later</strong> than the upper estimate. Plan accordingly.
+            <br><br>
+            After moonset: zero light pollution. Mudh is likely the darkest spot on the entire itinerary — flat open fields, 360° horizon.
+            <br><br>
+            <span class="correction">⚠️ The itinerary says "after 10:30 PM" — but tonight the moon is still above the horizon until 11:38 PM. Start shooting seriously from ~midnight. Core rises ~2:45 AM.</span>
+          </div>
+          <div class="mw-window"><div class="mw-window-label">Moonset</div><div class="mw-window-time">11:38 PM IST ✓</div></div>
+          <div class="mw-window"><div class="mw-window-label">Dark window</div><div class="mw-window-time">~midnight → dawn</div></div>
+          <div class="mw-window"><div class="mw-window-label">Core rises</div><div class="mw-window-time">~2:45 AM IST</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 5 ═══ -->
+  <div class="day-panel" id="panel-4">
+    <div class="day-nav"><button class="day-nav-btn" onclick="switchTab(3)">← Prev Day</button><button class="day-nav-btn" onclick="switchTab(5)">Next Day →</button></div>
+    <div class="day-header-card">
+      <div class="day-big-num">05</div>
+      <div class="day-header-title">
+        <h2>Mudh — Local Sightseeing Day</h2>
+        <div class="day-meta"><span class="tag tag-route">Mar 24, Mon</span><span class="tag tag-km">Local only · no driving</span><span class="tag tag-hotel">Tara House Homestay, Mudh</span></div>
+      </div>
+      <div class="moon-badge"><div class="moon-icon">🌓</div><div class="moon-pct">35.2%</div><div class="moon-name">Waxing Crescent</div></div>
+    </div>
+    <div class="day-body">
+      <div>
+        <div class="day-col-title">Day Schedule</div>
+        <div class="timeline-item"><div class="timeline-time">08:30</div><div class="timeline-text">Rest day — explore entirely on foot. No driving.</div></div>
+        <div class="timeline-item"><div class="timeline-time">09:00</div><div class="timeline-text">Hike toward <strong>Mud Monastery</strong> or up valley trail (4–6km round trip). Panoramic Pin Parvati range.</div></div>
+        <div class="timeline-item"><div class="timeline-time">13:00</div><div class="timeline-text">Lunch at Tara House — fresh dal, sabzi, chapati.</div></div>
+        <div class="timeline-item"><div class="timeline-time">15:00</div><div class="timeline-text">Scout photography spots. Map open meadows. Plan camera orientation for pre-dawn core rise.</div></div>
+        <div class="timeline-item"><div class="timeline-time">20:00</div><div class="timeline-text">⚠️ <strong>No dark window tonight</strong> — moon does not set. Early evening shooting only (before moon rises high ~9 PM). Prioritise rest for the long return drive tomorrow.</div></div>
+      </div>
+      <div>
+        <div class="day-col-title">Things to Do</div>
+        <ul class="todo-list">
+          <li class="todo-item"><strong>Valley hike:</strong> Trail toward Pin-Parvati Pass basecamp — even 3–4km gives tremendous views. Snow patches possible; stay on trail</li>
+          <li class="todo-item"><strong>Mudh monastery:</strong> Ancient mud-walled gompa. Monks may invite you in for butter tea</li>
+          <li class="todo-item"><strong>Wildlife watching:</strong> Scan high ridges for Ibex, Blue Sheep, Snow Leopard — late afternoon is best</li>
+          <li class="todo-item"><strong>Cultural exchange:</strong> Time with the Tara House host family — often the most memorable part of the trip</li>
+        </ul>
+      </div>
+      <div>
+        <div class="day-col-title">Night Sky — Milky Way</div>
+        <div class="mw-block">
+          <div class="mw-status"><div class="mw-dot limited"></div><div class="mw-status-text limited">⚠️ NO MOONSET TONIGHT</div></div>
+          <div class="mw-info">
+            Moon <strong>35.2%</strong> illuminated. The moon rises at <strong>9:34 AM</strong> on Mar 24 and <strong>does not set</strong> before the next day's moonrise — it is above the horizon all night (verified from timeanddate.com).
+            <br><br>
+            <strong>The original itinerary's claim of "Milky Way best after moonset (~midnight)" is incorrect for this night.</strong> There is no moonset.
+            <br><br>
+            Your only window is immediately after astronomical twilight <strong>~8:00–8:45 PM</strong> while the moon is still low. After that, the 35% moon progressively brightens the sky all night.
+          </div>
+          <div class="mw-window alert"><div class="mw-window-label">Only window</div><div class="mw-window-time">8:00–8:45 PM only</div></div>
+          <div class="mw-window alert"><div class="mw-window-label">Moon sets</div><div class="mw-window-time">No moonset tonight</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 6 ═══ -->
+  <div class="day-panel" id="panel-5">
+    <div class="day-nav"><button class="day-nav-btn" onclick="switchTab(4)">← Prev Day</button><button class="day-nav-btn" onclick="switchTab(6)">Next Day →</button></div>
+    <div class="day-header-card">
+      <div class="day-big-num">06</div>
+      <div class="day-header-title">
+        <h2>Mudh → Spiti → Nako → Rampur</h2>
+        <div class="day-meta"><span class="tag tag-route">Mar 25, Tue</span><span class="tag tag-km">220 km · 8–9 hrs</span><span class="tag tag-hotel">Rampur HPTDC</span></div>
+      </div>
+      <div class="moon-badge"><div class="moon-icon">🌓</div><div class="moon-pct">47.0%</div><div class="moon-name">Approaching First Quarter</div></div>
+    </div>
+    <div class="day-body">
+      <div>
+        <div class="day-col-title">Route & Timeline</div>
+        <div class="timeline-item"><div class="timeline-time">07:00</div><div class="timeline-text">Depart Mudh early. Long return — retrace Pin Valley to main Spiti road.</div></div>
+        <div class="timeline-item"><div class="timeline-time">09:30</div><div class="timeline-text"><strong>Tabo</strong> — Optional revisit for anything missed.</div></div>
+        <div class="timeline-item"><div class="timeline-time">11:00</div><div class="timeline-text"><strong>Nako area</strong> — Spiti River stops, river-bend photography.</div></div>
+        <div class="timeline-item"><div class="timeline-time">14:00</div><div class="timeline-text">Re-enter Kinnaur valley. Road improves gradually.</div></div>
+        <div class="timeline-item"><div class="timeline-time">16:30</div><div class="timeline-text"><strong>Sutlej River, near Rampur</strong> — Evening walk, golden hour on the cliffs.</div></div>
+        <div class="timeline-item"><div class="timeline-time">17:30</div><div class="timeline-text"><strong>Arrive Rampur</strong>. Check-in HPTDC. First proper hot shower in days.</div></div>
+      </div>
+      <div>
+        <div class="day-col-title">Things to Do</div>
+        <ul class="todo-list">
+          <li class="todo-item"><strong>Spiti River bends near Nako:</strong> River turns through sculpted gorges — multiple pullout compositions</li>
+          <li class="todo-item"><strong>Wangtu bridge:</strong> Dramatic in late afternoon with canyon shadows</li>
+          <li class="todo-item"><strong>Rampur Bushahr:</strong> Padampur Palace, bazaar for Kinnauri goods, riverside Shiv temple</li>
+          <li class="todo-item">Rest and recovery — wind-down day</li>
+        </ul>
+      </div>
+      <div>
+        <div class="day-col-title">Night Sky — Milky Way</div>
+        <div class="mw-block">
+          <div class="mw-status"><div class="mw-dot fair"></div><div class="mw-status-text fair">LIMITED — PLAN CAREFULLY</div></div>
+          <div class="mw-info">
+            Moon <strong>47%</strong> illuminated (original itinerary said ~65% — the actual illumination is lower, and the moonset is earlier than stated). Moonset at <strong>12:47 AM IST</strong> (this was listed by the original itinerary as the "~10 PM window only" — that was incorrect).
+            <br><br>
+            After moonset at 12:47 AM, you actually have ~2–3 hours of proper dark sky before dawn. This night is better than the original itinerary suggested.
+            <br><br>
+            However Rampur itself has some light pollution. Drive out toward Sarahan for better skies.
+          </div>
+          <div class="mw-window"><div class="mw-window-label">Moonset</div><div class="mw-window-time">12:47 AM IST ✓</div></div>
+          <div class="mw-window"><div class="mw-window-label">Dark window</div><div class="mw-window-time">~1 AM → 4 AM</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DAY 7 ═══ -->
+  <div class="day-panel" id="panel-6">
+    <div class="day-nav"><button class="day-nav-btn" onclick="switchTab(5)">← Prev Day</button><button class="day-nav-btn" disabled>Next →</button></div>
+    <div class="day-header-card">
+      <div class="day-big-num">07</div>
+      <div class="day-header-title">
+        <h2>Rampur → Shimla (Drop)</h2>
+        <div class="day-meta"><span class="tag tag-route">Mar 26, Wed</span><span class="tag tag-km">130 km · 4–5 hrs</span><span class="tag tag-hotel">Trip ends at Shimla</span></div>
+      </div>
+      <div class="moon-badge"><div class="moon-icon">🌓</div><div class="moon-pct">58.8%</div><div class="moon-name">Near First Quarter</div></div>
+    </div>
+    <div class="day-body">
+      <div>
+        <div class="day-col-title">Route & Timeline</div>
+        <div class="timeline-item"><div class="timeline-time">09:00</div><div class="timeline-text">Depart Rampur after a proper breakfast.</div></div>
+        <div class="timeline-item"><div class="timeline-time">10:30</div><div class="timeline-text"><strong>Narkanda</strong> — Last mountain views. Tea stall with apple orchard backdrop.</div></div>
+        <div class="timeline-item"><div class="timeline-time">13:30</div><div class="timeline-text"><strong>Arrive Shimla</strong>. End of expedition.</div></div>
+        <div class="timeline-item"><div class="timeline-time">—</div><div class="timeline-text">Note: <strong>First Quarter falls at 12:47 AM tonight</strong> (Mar 26 IST, per timeanddate.com Spiti). Moon sets at 1:49 AM. Limited window.</div></div>
+      </div>
+      <div>
+        <div class="day-col-title">Things to Do</div>
+        <ul class="todo-list">
+          <li class="todo-item"><strong>Shimla Mall Road:</strong> Scandal Point, Christ Church, Ridge viewpoint</li>
+          <li class="todo-item"><strong>Jakhu Temple:</strong> 30-min hike from Mall Road, overlooking the city</li>
+          <li class="todo-item"><strong>Photo backup:</strong> Find a café with power — back up all astrophotography before losing location context</li>
+          <li class="todo-item">Celebrate — one of India's most dramatic drives under some of the darkest skies on Earth</li>
+        </ul>
+      </div>
+      <div>
+        <div class="day-col-title">Night Sky — Milky Way</div>
+        <div class="mw-block">
+          <div class="mw-status"><div class="mw-dot limited"></div><div class="mw-status-text limited">NOT RECOMMENDED</div></div>
+          <div class="mw-info">
+            Moon <strong>58.8%</strong>, moonset at <strong>1:49 AM IST</strong>. First Quarter falls exactly on this date (12:47 AM IST). Significant light pollution in Shimla city on top of the bright moon.
+            <br><br>
+            No practical Milky Way photography tonight. Cull and back up your images — you'll have hundreds of frames to review.
+          </div>
+          <div class="mw-window"><div class="mw-window-label">Moonset</div><div class="mw-window-time">1:49 AM IST</div></div>
+          <div class="mw-window alert"><div class="mw-window-label">Recommendation</div><div class="mw-window-time">Skip, review photos</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ STATIC SECTIONS ════ -->
+
+  <div class="section-label" style="margin-top:56px;">How to Spot the Milky Way</div>
+  <div class="spot-guide">
+    <h3>🌌 Field Guide to Finding the Galaxy</h3>
+    <div class="spot-steps">
+      <div class="spot-step">
+        <div class="spot-step-num">STEP 01 — ADAPT</div>
+        <p>Give your eyes <strong>20–30 minutes</strong> to dark-adapt. Use a <strong>red headlamp</strong> only — white light resets rod cells instantly.</p>
+      </div>
+      <div class="spot-step">
+        <div class="spot-step-num">STEP 02 — ORIENT</div>
+        <p>In March pre-dawn, face <strong>south-southeast</strong>. The galactic core rises near <strong>Sagittarius and Scorpius</strong> — look for a dense hazy patch low on the southern horizon around 3–4 AM.</p>
+      </div>
+      <div class="spot-step">
+        <div class="spot-step-num">STEP 03 — AVERTED VISION</div>
+        <p>Don't stare directly — look slightly to the side. In Spiti's <strong>Bortle Class 1</strong> sky, the Milky Way casts a faint visible shadow on the ground.</p>
+      </div>
+      <div class="spot-step">
+        <div class="spot-step-num">STEP 04 — USE APPS</div>
+        <p>Download <strong>Stellarium, PhotoPills, or SkySafari</strong> offline before leaving Shimla. They show exact core rise/set times and allow AR pre-framing in the field.</p>
+      </div>
+      <div class="spot-step">
+        <div class="spot-step-num">STEP 05 — FIND FOREGROUND</div>
+        <p>Scout in daylight. Best spots: <strong>Dhankar Lake viewpoint</strong>, open fields behind <strong>Tara House in Mudh</strong>, Kinner Kailash ridge from Kalpa.</p>
+      </div>
+      <div class="spot-step">
+        <div class="spot-step-num">STEP 06 — COLD PREP</div>
+        <p>Nights drop to <strong>-10°C to -20°C</strong>. Keep batteries inside your jacket. Bring a thermos. Set a timer — hypothermia sneaks up when you're stationary.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Photography Techniques</div>
+  <div class="guide-grid">
+    <div class="guide-card">
+      <div class="guide-card-title"><span>📷</span> Camera Settings</div>
+      <ul>
+        <li><strong>ISO:</strong> 1600–6400 (start at 3200, adjust for noise)</li>
+        <li><strong>Aperture:</strong> f/1.4–f/2.8 — as wide as your lens allows</li>
+        <li><strong>Shutter:</strong> 500 rule — 500 ÷ focal length = max seconds. 24mm → ~20 sec before star trails</li>
+        <li><strong>Focus:</strong> Manual, live view at 10× on a bright star. AF hunts and fails</li>
+        <li><strong>White Balance:</strong> 3500–4200K for natural dark-blue sky; refine in RAW</li>
+        <li><strong>Format:</strong> Always RAW — dynamic range is essential for post-processing</li>
+        <li><strong>Intervalometer:</strong> For timelapse or avoiding shake on bulb exposures</li>
+      </ul>
+    </div>
+    <div class="guide-card">
+      <div class="guide-card-title"><span>🎯</span> Composition & Technique</div>
+      <ul>
+        <li><strong>Rule of Thirds:</strong> Band along diagonal third; monastery or peak in lower third</li>
+        <li><strong>Stacking:</strong> 10–20 identical frames stacked in Sequator (free) — dramatic noise reduction</li>
+        <li><strong>Star Trails:</strong> f/8, ISO 400, hundreds of 30-sec frames merged in StarStax</li>
+        <li><strong>Light painting:</strong> Torch or phone to illuminate monastery walls during long exposure</li>
+        <li><strong>Panorama:</strong> 5–8 overlapping vertical frames; stitch in Lightroom/PTGui for 180° arch</li>
+        <li><strong>Gear:</strong> Wide-angle 14–24mm; sturdy tripod; remote shutter; 3× spare batteries</li>
+      </ul>
+    </div>
+    <div class="guide-card">
+      <div class="guide-card-title"><span>✏️</span> Post-Processing (RAW)</div>
+      <ul>
+        <li><strong>Noise:</strong> Luminance NR 40–70, Color NR 40–60 in Lightroom; or Topaz DeNoise AI</li>
+        <li><strong>Clarity:</strong> Dehaze +20–40, Clarity +10–20 to pull out nebula texture</li>
+        <li><strong>Colour grade:</strong> Highlights toward teal/blue, shadows toward magenta-purple</li>
+        <li><strong>Stretch histogram:</strong> Lift exposure +1–2 EV, then pull highlights back</li>
+        <li><strong>Sky mask:</strong> Lightroom AI masking — process sky and foreground independently</li>
+        <li><strong>Sharpen stars:</strong> Use a luminosity mask only — avoids amplifying noise in darks</li>
+      </ul>
+    </div>
+    <div class="guide-card">
+      <div class="guide-card-title"><span>⚡</span> Spiti-Specific Tips</div>
+      <ul>
+        <li><strong>Altitude:</strong> Don't do a full late-night shoot on your first Spiti night — AMS peaks overnight</li>
+        <li><strong>Lens fogging:</strong> Wrap a hand warmer in a sock around the lens barrel</li>
+        <li><strong>Sand drift:</strong> High-altitude desert — keep lens caps on between exposures</li>
+        <li><strong>Power banks:</strong> 20,000 mAh+ fully charged in Shimla; homestay charging is unreliable</li>
+        <li><strong>No ATMs beyond Recong Peo</strong> — carry cash. No data above Nako most nights</li>
+        <li><strong>Prime spots:</strong> Dhankar Lake, Mudh open fields, Kinner Kailash ridge from Kalpa</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Verified Moon & Milky Way Summary <span style="font-family:'Barlow',sans-serif;font-weight:300;font-size:11px;color:var(--muted);letter-spacing:0;text-transform:none;">— Source: timeanddate.com, Lahaul & Spiti, HP</span></div>
+  <table class="settings-table">
+    <thead>
+      <tr>
+        <th>Day</th><th>Date</th><th>Location</th><th>Moon %</th><th>Moonset (IST) <span class="verified-badge">VERIFIED</span></th><th>Dark Window</th><th>Core Rises</th><th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1</strong></td><td>Mar 20</td><td>Sangla</td><td>2.2%</td><td>8:04 PM</td><td>8:15 PM → dawn</td><td>~3:30–4:00 AM</td><td style="color:#4ecfa8;">●●●●● Excellent</td></tr>
+      <tr><td><strong>2</strong></td><td>Mar 21</td><td>Kalpa</td><td>7.1%</td><td>9:14 PM</td><td>9:15 PM → dawn</td><td>~3:15 AM</td><td style="color:#4ecfa8;">●●●●● Excellent</td></tr>
+      <tr><td><strong>3</strong></td><td>Mar 22</td><td>Dhankar</td><td>14.6%</td><td>10:26 PM</td><td>10:30 PM → dawn</td><td>~3:00 AM</td><td style="color:#6db3f2;">●●●● Great</td></tr>
+      <tr><td><strong>4</strong></td><td>Mar 23</td><td>Mudh</td><td>24.1%</td><td>11:38 PM</td><td>~midnight → dawn</td><td>~2:45 AM</td><td style="color:#6db3f2;">●●●● Very Good</td></tr>
+      <tr style="background:rgba(224,123,58,0.04)"><td><strong>5</strong></td><td>Mar 24</td><td>Mudh</td><td>35.2%</td><td style="color:#e07b3a;"><strong>No moonset</strong></td><td>8:00–8:45 PM only</td><td>—</td><td style="color:#e07b3a;">● Very Limited</td></tr>
+      <tr><td><strong>6</strong></td><td>Mar 25</td><td>Rampur</td><td>47.0%</td><td>12:47 AM</td><td>~1 AM – 4 AM</td><td>—</td><td style="color:#c9a84c;">●●● Fair</td></tr>
+      <tr><td><strong>7</strong></td><td>Mar 26</td><td>Shimla</td><td>58.8%</td><td>1:49 AM</td><td>None practical</td><td>—</td><td style="color:#e05050;">✗ Skip</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notice warn-box" style="margin-bottom:16px;">
+    <div class="notice-title">⚠️ Key Corrections vs. Original Itinerary</div>
+    <strong>Day 2 (Kalpa):</strong> Original said "~9:45 PM" — actual moonset is 9:14 PM (31 min earlier, better for you). &nbsp;|&nbsp; <strong>Day 3 (Dhankar):</strong> "~10:00–10:15 PM" — actual is 10:26 PM (16 min later, minor). &nbsp;|&nbsp; <strong>Day 4 (Mudh):</strong> "10:30 PM" — actual moonset is 11:38 PM (over an hour later, start shooting seriously from midnight). &nbsp;|&nbsp; <strong>Day 5 (Mudh):</strong> "Milky Way best after moonset ~midnight" — <strong>critically wrong: moon doesn't set at all on Mar 24</strong> in Spiti. Only a brief 8–8:45 PM window. &nbsp;|&nbsp; <strong>Day 6 (Rampur):</strong> "Only possible till ~10 PM" — actual moonset is 12:47 AM, giving a 1–4 AM dark window (better than stated).
+  </div>
+
+  <div class="notice">
+    <div class="notice-title">📱 Apps — Download Offline Before Leaving Shimla</div>
+    <strong>PhotoPills</strong> — best for galactic core rise/set times and AR planning. <strong>Stellarium</strong> — free, offline-capable, real-time sky. <strong>SkySafari</strong> — constellation ID. All times here sourced from <strong>timeanddate.com — Lahaul & Spiti, Himachal Pradesh</strong>. For pinpoint accuracy at your exact shooting spot, verify in PhotoPills with GPS coordinates.
+  </div>
+
+  <div style="text-align:center; margin-top:48px; font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:0.2em;">
+    SAFE TRAVELS · CLEAR SKIES · MAR 2026<br>
+    <span style="color:var(--dim);">Moon data: timeanddate.com · Lahaul & Spiti, HP · All times IST</span>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(idx) {
+    document.querySelectorAll('.day-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+    document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+    document.querySelectorAll('.milestone').forEach((m, i) => m.classList.toggle('active', i === idx));
+    const btn = document.querySelectorAll('.tab-btn')[idx];
+    if (btn) btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    const wrap = document.querySelector('.tab-bar-wrap');
+    if (wrap) window.scrollTo({ top: wrap.getBoundingClientRect().top + window.scrollY - 8, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
